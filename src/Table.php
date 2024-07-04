@@ -234,7 +234,7 @@ class Table
             //test each field in each row
             $i = 0;
             foreach ($row as $field) {
-                if (mb_strlen($field) > $this->maxLength[$i]) {
+                if (mb_strlen($field ?? '') > $this->maxLength[$i]) {
                     $this->maxLength[$i] = mb_strlen($field);
                 }
                 ++$i;
