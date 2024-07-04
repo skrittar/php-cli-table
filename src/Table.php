@@ -222,9 +222,9 @@ class Table
         foreach ($this->header as $field) {
             //set initial max lengths to the length of each header cell
             if (!isset($this->maxLength[$i])) {
-                $this->maxLength[$i] = mb_strlen($field);
-            } elseif (mb_strlen($field) > $this->maxLength[$i]) {
-                $this->maxLength[$i] = mb_strlen($field);
+                $this->maxLength[$i] = mb_strlen($field ?? '');
+            } elseif (mb_strlen($field ?? '') > $this->maxLength[$i]) {
+                $this->maxLength[$i] = mb_strlen($field ?? '');
             }
             ++$i;
         }
@@ -235,7 +235,7 @@ class Table
             $i = 0;
             foreach ($row as $field) {
                 if (mb_strlen($field ?? '') > $this->maxLength[$i]) {
-                    $this->maxLength[$i] = mb_strlen($field);
+                    $this->maxLength[$i] = mb_strlen($field ?? '');
                 }
                 ++$i;
             }
